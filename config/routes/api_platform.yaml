@@ -1,4 +1,13 @@
 api_platform:
-    resource: .
-    type: api_platform
-    prefix: /api
+    title: 'Budget API'
+    version: '1.0.0'
+    description: 'API REST pour la gestion de budget personnel'
+    defaults:
+        stateless: true
+        cache_header:
+            vary: ['Content-Type', 'Authorization','Origin']
+    formats:
+        jsonld:      ['application/ld+json']
+        json:        ['application/json']
+        html:        ['text/html']
+        jsonopenapi: ['application/vnd.openapi+json']
