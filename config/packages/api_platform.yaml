@@ -1,7 +1,13 @@
 api_platform:
-    title: Hello API Platform
-    version: 1.0.0
+    title: 'Budget API'
+    version: '1.0.0'
+    description: 'API REST pour la gestion de budget personnel'
     defaults:
         stateless: true
-        cache_headers:
-            vary: ['Content-Type', 'Authorization', 'Origin']
+        cache_header:
+            vary: ['Content-Type', 'Authorization','Origin']
+    formats:
+        jsonld:      ['application/ld+json']
+        json:        ['application/json']
+        html:        ['text/html']
+        jsonopenapi: ['application/vnd.openapi+json']
