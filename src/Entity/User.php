@@ -9,6 +9,7 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use ApiPlatform\Metadata\Delete;
 use App\Repository\UserRepository;
+use App\State\UserProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -27,8 +28,8 @@ use DateTime;
     operations: [
         new GetCollection(),
         new Get(),
-        new Post(),
-        new Put(),
+        new Post( processor: UserProcessor::class),
+        new Put( processor: UserProcessor::class),
         new Delete()
     ]
 )]
