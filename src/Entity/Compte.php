@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\CompteRepository;
+use App\State\CompteProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -23,8 +24,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
     denormalizationContext: ['groups' => ['compte:write']],
     operations: [
         new Get(),
-        new Post(),
-        new Put(),
+        new Post(processor: CompteProcessor::class),
+        new Put(processor: CompteProcessor::class),
         new Delete(),
     ]
 )]
