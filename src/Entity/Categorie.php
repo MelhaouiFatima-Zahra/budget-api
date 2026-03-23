@@ -11,6 +11,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
+use App\State\CategorieProcessor;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -24,8 +25,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     operations: [
         new GetCollection(),
         new Get(),
-        new Post(),
-        new Put(),
+        new Post(processor: CategorieProcessor::class),
+        new Put(processor: CategorieProcessor::class),
         new Delete(),
     ]
 )]
@@ -66,7 +67,7 @@ class Categorie
     #[Groups(['categorie:read', 'categorie:write'])]
     #[Assert\NotBlank(message: 'Le type de catégorie ne peut pas être vide.')]
     #[Assert\Choice(
-        choices: ['revenu', 'dépense', 'les deux'],
+        choices: ['revenu', 'depense', 'les deux'],
         message: 'Le type de catégorie doit être l\'un des suivants : {{ choices }}.',
     )]
     private ?string $type = null;
